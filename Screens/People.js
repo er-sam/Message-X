@@ -22,7 +22,7 @@ export default function People() {
             gap: 12,
             justifyContent: "center",
             alignItems: "center",
-            paddingVertical: 12,
+            paddingVertical: 18,
           }}
         >
           <Text style={{ fontSize: 26, fontWeight: "bold", color: "#363062" }}>

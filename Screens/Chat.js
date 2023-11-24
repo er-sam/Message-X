@@ -11,36 +11,49 @@ export default function Chat() {
   const navigation = useNavigation();
   useLayoutEffect(() => {
     navigation.setOptions({
-      //   headerTintColor: Colors.DarkBlue,
       headerStyle: {
         backgroundColor: "#61A3BA",
-        // elevation:6
       },
       headerTitle: "",
       headerLeft: () => (
-        <View
-          style={{
-            flexDirection: "row",
-            gap: 12,
-            justifyContent: "center",
-            alignItems: "center",
-            paddingVertical: 12,
-          }}
-        >
-          <Text style={{ fontSize: 26, fontWeight: "bold", color: "#363062" }}>
-            MessageX
-          </Text>
-          {/* <EvilIcons name="arrow-right" size={24} color="#" /> */}
-          <Text
+        // <View
+        //   style={{
+        //     flexDirection: "row",
+        //     gap: 12,
+        //     justifyContent: "center",
+        //     alignItems: "center",
+        //     paddingVertical: 12,
+        //   }}
+        // >
+        //   <Text style={{ fontSize: 26, fontWeight: "bold", color: "#363062" }}>
+        //     MessageX
+        //   </Text>
+        //   <Text
+        //     style={{
+        //       fontSize: 26,
+        //       fontWeight: "bold",
+        //       color: "black",
+        //       opacity: 0.3,
+        //     }}
+        //   >
+        //     Chat
+        //   </Text>
+        // </View>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Ionicons
+          onPress={()=>{navigation.goBack()}}
+          name="ios-chevron-back" size={32} color="black" />
+          <Image
+            source={require("../assets/avtar.webp")}
             style={{
-              fontSize: 26,
-              fontWeight: "bold",
-              color: "black",
-              opacity: 0.3,
+              width: 40,
+              height: 40,
+              objectFit: "contain",
+              borderRadius: 100,
+              // marginLeft:15
             }}
-          >
-            Chat
-          </Text>
+          />
+          <Text style={{ fontSize: 24,marginLeft:13 }}>Suman Gupta</Text>
         </View>
       ),
       headerRight: () => (
@@ -52,18 +65,24 @@ export default function Chat() {
             alignItems: "center",
           }}
         >
-          <Feather
-          onPress={()=>navigation.navigate("Friends")}
-          name="message-square" size={28} color="black" />
+          {/* <Feather
+            onPress={() => navigation.navigate("Friends")}
+            name="message-square"
+            size={28}
+            color="black"
+          />
           <Ionicons
             onPress={() => navigation.navigate("People")}
             name="people-outline"
             size={28}
             color="black"
+          /> */}
+          <SimpleLineIcons
+            onPress={() => navigation.navigate("Settings")}
+            name="settings"
+            size={24}
+            color="black"
           />
-          <SimpleLineIcons 
-          onPress={()=>navigation.navigate("Settings")}
-          name="settings" size={24} color="black" />
         </View>
       ),
     });
@@ -72,34 +91,9 @@ export default function Chat() {
     <View
       style={{
         flex: 1,
-        // alignItems: "center",
-        // padding: 12,
-        // backgroundColor: "#f8f8f8",
       }}
     >
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 12,
-          padding: 12,
-          // elevation:6
-          backgroundColor: "#f8f8f8",
-          // marginTop:-8
-        }}
-      >
-        <Image
-          source={require("../assets/avtar.webp")}
-          style={{
-            width: 50,
-            height: 50,
-            objectFit: "contain",
-            borderRadius: 100,
-          }}
-        />
-        <Text style={{ fontSize: 26 }}>Suman Gupta</Text>
-      </View>
+      {/* <Vie  */}
       <Messages />
       <TypeMessage />
     </View>

@@ -1,16 +1,18 @@
-import { View, Text, ScrollView, Image, TouchableOpacity, Pressable } from "react-native";
-import React, { useLayoutEffect } from "react";
+import { View, Text, ScrollView, Image, Pressable, Alert } from "react-native";
+import React, { useContext, useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Feather } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
-import { EvilIcons } from "@expo/vector-icons";
+import { AuthContext } from "../Context/authContext";
+
 
 export default function Friends() {
+  const [State,setState] = useContext(AuthContext);
+
+
   const navigation = useNavigation();
   useLayoutEffect(() => {
     navigation.setOptions({
-      //   headerTintColor: Colors.DarkBlue,
       headerStyle: {
         backgroundColor: "#61A3BA",
       },
@@ -22,7 +24,7 @@ export default function Friends() {
             gap: 12,
             justifyContent: "center",
             alignItems: "center",
-            paddingVertical: 12,
+            paddingVertical: 18,
           }}
         >
           <Text style={{ fontSize: 26, fontWeight: "bold", color: "#363062" }}>
@@ -58,28 +60,31 @@ export default function Friends() {
             color="black"
           />
           <SimpleLineIcons
-            onPress={()=>navigation.navigate("Settings")}
-          name="settings" size={24} color="black" />
+            onPress={() => navigation.navigate("Settings")}
+            name="settings"
+            size={24}
+            color="black"
+          />
         </View>
       ),
     });
   }, []);
   return (
-    <ScrollView style={{marginTop:7}}>
+    <ScrollView style={{ marginTop: 2 }}>
       <Pressable
-      onPressOut={()=>navigation.navigate("Chat")}
+        onPressOut={() => navigation.navigate("Chat")}
         style={{
           flexDirection: "row",
           alignItems: "center",
           gap: 15,
-          backgroundColor: "#DDE6ED",
-          padding: 10,
-          // marginLeft:11,
-          // elevation: 5,
-          // marginTop: 1,
+          paddingVertical: 5,
+          marginLeft: 18,
+          marginRight: 18,
+          borderBottomWidth: 1,
+          borderBottomColor: "#DDE",
         }}
       >
-        <View style={{ flexDirection: "row", gap: 11, alignItems: "center" }}>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 15 }}>
           <Image
             source={require("../assets/avtar.webp")}
             style={{
@@ -89,33 +94,64 @@ export default function Friends() {
               borderRadius: 100,
             }}
           />
-          <Text style={{ fontSize: 25, fontWeight: "600", width: 200 }}>
-            Suman Gupta
-          </Text>
+          <Text style={{ fontSize: 22, fontWeight: "500" }}>{State?.user?.name}</Text>
         </View>
-        {/* <TouchableOpacity
-          style={{
-            backgroundColor: "#61A3BA",
-            paddingHorizontal: 10,
-            paddingVertical: 5,
-            borderRadius: 18,
-            elevation: 5,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 16,
-              fontWeight: "700",
-              color: "white",
-              textAlign: "center",
-            }}
-          >
-            Request
-          </Text>
-        </TouchableOpacity> */}
       </Pressable>
 
+      <Pressable
+        onPressOut={() => navigation.navigate("Chat")}
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          gap: 15,
+          // backgroundColor: "#DDE6ED",
+          paddingVertical: 5,
+          marginLeft: 18,
+          borderBottomWidth: 1,
+          borderBottomColor: "#DDE",
+          marginRight: 18,
+        }}
+      >
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 15 }}>
+          <Image
+            source={require("../assets/sam.jpg")}
+            style={{
+              width: 50,
+              height: 50,
+              objectFit: "contain",
+              borderRadius: 100,
+            }}
+          />
+          <Text style={{ fontSize: 22, fontWeight: "500" }}>Sam</Text>
+        </View>
+      </Pressable>
 
+      <Pressable
+        onPressOut={() => navigation.navigate("Chat")}
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          gap: 15,
+          paddingVertical: 5,
+          marginLeft: 18,
+          borderBottomWidth: 1,
+          borderBottomColor: "#DDE",
+          marginRight: 18,
+        }}
+      >
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 15 }}>
+          <Image
+            source={require("../assets/download.jpg")}
+            style={{
+              width: 50,
+              height: 50,
+              objectFit: "contain",
+              borderRadius: 100,
+            }}
+          />
+          <Text style={{ fontSize: 22, fontWeight: "500" }}>Pawan Sr</Text>
+        </View>
+      </Pressable>
     </ScrollView>
   );
 }

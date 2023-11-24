@@ -18,7 +18,8 @@ export default function StackNavigator() {
         <Stack.Screen  name="Chat" component={Chat} />
         <Stack.Screen  name="People" component={People} />
         <Stack.Screen  name="Friends" component={Friends} />
-        <Stack.Screen  name="Settings" component={Settings} />
+        <Stack.Screen  name="Settings"
+        component={Settings} />
       </Stack.Navigator>
     </NavigationContainer>
   );
